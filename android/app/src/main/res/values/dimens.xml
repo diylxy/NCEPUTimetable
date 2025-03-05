@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="sample_long_text_max_resize_height">276dp</dimen>
+    <dimen name="sample_long_text_max_resize_width">624dp</dimen>
+    <dimen name="sample_long_text_widget_min_height">115dp</dimen>
+    <dimen name="sample_long_text_min_resize_height">115dp</dimen>
+    <dimen name="sample_long_text_min_resize_width">120dp</dimen>
+    <dimen name="sample_long_text_widget_min_width">120dp</dimen>
+</resources>
