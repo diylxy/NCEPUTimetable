@@ -25,7 +25,7 @@ class CourseController {
     val courseTimeList = mutableListOf<CourseTime>();
 
     fun getCurrentWeekID(): Int {
-        return 1;
+        return 5;
     }
 
     fun load(json: String?){
@@ -183,8 +183,10 @@ class CourseController {
 
         // 找出时差最短的作为结果
         var deltaMin = Int.MAX_VALUE;
-
+        var isBetweenClass = false;
         for (delta in deltas) {
+            if (delta < 0 && isBetweenClass == true) return 0;      // 特殊情况：课间时课程数据更新，delta中将同时包含正负
+            if (delta >= 0) isBetweenClass = true;
             deltaMin = deltaMin.coerceAtMost(delta);
         }
 
@@ -257,8 +259,8 @@ class CourseController {
     fun getDayStr(
         now: Calendar,
         target: Calendar): String {
-        val nowDate = now.time.time / 86400000;
-        val targetDate = target.time.time / 86400000;
+        val nowDate = (now.time.time + 3600 * 8 * 1000) / 86400000;
+        val targetDate = (target.time.time + 3600 * 8 * 1000) / 86400000;
         val deltaDate = targetDate - nowDate;
         if (deltaDate == 0L) {
             return "今天";
